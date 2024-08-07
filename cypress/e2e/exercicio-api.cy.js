@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 import contrato from '../contracts/usuarios.contract'
 
 const {faker} = require('@faker-js/faker');

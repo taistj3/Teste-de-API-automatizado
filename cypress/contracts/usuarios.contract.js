@@ -1,3 +1,4 @@
+
 const Joi = require ('joi')
 
 const usuariosSchema = Joi.object({
