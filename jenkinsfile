@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+
+    environment {
+        SERVER_PORT = '3000'
+    }
+    stages {
+        stage('Setup') {
+            steps {
+               git branch: 'main', url: 'https://github.com/taistj3/Teste-de-API-automatizado.git'
+                bat 'npm install'
+            }
+        }
+        stage('Start API Server') {
+            steps {
+                script {
+                    bat '''
+                    @echo off
+                    echo Starting Serverest API...
+                    start /B npx serverest@latest --port %SERVER_PORT% > server.log 2>&1
+                    echo %PROCESS_ID% > server.pid
+                    '''
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+               bat '''set NO_COLOR=1
+npm test'''
+            }
+        }
+        stage('Stop API Server') {
+            steps {
+                script {
+                    bat '''
+                    @echo off
+                    if exist server.pid (
+                        set /p PID=<server.pid
+                        taskkill /PID %PID% /F
+                        del server.pid
+                    ) else (
+                        echo PID file not found. Unable to stop the server.
+                    )
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                bat '''
+                @echo off
+                if exist server.pid (
+                    set /p PID=<server.pid
+                    taskkill /PID %PID% /F
+                    del server.pid
+                )
+                '''
+            }
+        }
+        
+    }
+}
