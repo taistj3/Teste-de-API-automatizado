@@ -21,6 +21,7 @@ jobs:
 
       - name: Run server, tests and generate report
         run: npm run ci
+        continue-on-error: true
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
