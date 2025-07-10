@@ -1,55 +1,14 @@
 # Testes API - EBAC
-### Exercício para os alunos de Qualidade de software da EBAC 
-
-## Clonando e executando em sua máquina
 
 ### Pré-requisito:
+Você vai usar a funcionalidade “Usuários” para automatizar os testes. 
 
--Node.js - Você encontra em: https://nodejs.org/en/
+Faça um clone ou fork do projeto do github: https://github.com/EBAC-QE/teste-api-ebac
 
--Visual Studio Code ou qualquer editor de texto - você encontra em: https://code.visualstudio.com/download
+Automatize os cenários pré-especificado no exercicio-api.cy.js 
 
--Git: você encontra em: https://git-scm.com/downloads
+Suba o servidor ServeRestlocalhost; 
 
-
-Via terminal, rode os seguintes comandos:
-```  
-git clone https://github.com/EBAC-QE/teste-api-ebac.git
-```
-```
-cd teste-api-ebac
-```
-
-#### Para instalar as dependencias:
-```
-npm install 
-```
-
-#### Para subir o servidor:
-```
-npm start
-```
-
-#### Para executar em moodo Headlesss via console:
-```
-npx cypress run
-```
-
-#### Para executar via Dashboard:
-```
-npx cypress open 
-```
-Após abrir o dashboard, prossiga com os passos sugerido pelo Cypress.
-
-
-### Bibliotecas de apoio:
--Cypress: Framework de automação: https://cypress.io/
-
-
-### Bom exercício ;) 
-Fábio & José Ernesto
-Qualidade de software
-
-
+Lembre-se de considerar boas práticas e otimizações.
 
 
