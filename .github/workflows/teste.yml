@@ -1,8 +1,9 @@
-name: Teste de API
+name: Run Cypress and Deploy Report
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   test:
@@ -15,15 +16,15 @@ jobs:
         with:
           node-version: 18
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        continue-on-error: true
-        with:
-          install-command: npm install
-          browser: chrome
+      - name: Install dependencies
+        run: npm install
 
-      - name: Publish report
+      - name: Run server, tests and generate report
+        run: npm run ci
+
+      - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./report
+
